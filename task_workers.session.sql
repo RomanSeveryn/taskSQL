@@ -18,7 +18,7 @@ SELECT *
 FROM "workers";
 
 INSERT INTO "workers" ("birthday", "name", "salary")
-VALUES('1997-1-1', 'Вася', '500');
+VALUES('1990-1-1', 'Вася', '500');
 
 
 INSERT INTO "workers" ("birthday", "name", "salary")
@@ -27,7 +27,9 @@ VALUES('1993-4-4', 'Светлана', '1200');
 INSERT INTO "workers" ("birthday", "name", "salary")
 VALUES
 ('1980-1-3', 'Ярослав', '1200'),
-('1993-1-4', 'Петро', '1000');
+('1997-1-4', 'Коля', '1000'),
+('1998-1-4', 'Коля', '1000'),
+('1999-1-4', 'Коля', '1000');
 
 /*
 Задачи на UPDATE
@@ -109,3 +111,22 @@ WHERE extract(year from age("birthday")) > 23 AND extract(year from age("birthda
 SELECT *
 FROM "workers"
 WHERE extract(year from age("birthday")) = 27 OR "salary" != 400;
+
+/*
+Задачи на DELETE
+Удалите работника с id=7.
+Удалите Колю.
+Удалите всех работников, у которых возраст 23 года.
+*/
+
+DELETE 
+FROM "workers"
+WHERE "id" = 7;
+
+DELETE 
+FROM "workers"
+WHERE "name" = 'Коля';
+
+DELETE 
+FROM "workers"
+WHERE extract(year from age("birthday")) = 23;
